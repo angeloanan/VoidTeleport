@@ -1,0 +1,25 @@
+#############
+#   v1.0    #
+#   1.15+   #
+#  Steven_  #
+#############
+
+# If height-enabled = false, it will teleport them to the safest block!
+# Also teleport-to-bedspawn has higher priority than teleport-to-world-spawn!
+
+# By default overworld is named 'world', if you have something else set change it here.
+world-name: "world"
+
+# Teleports the player to the spawnpoint of the world.
+teleport-to-world-spawn: false
+
+# Teleports the player to bedspawn or last spawnpoint.
+teleport-to-bedspawn: false
+
+# Kills the player right after they get teleported (WILL ONLY WORK IF THEY TAKE FALL DAMAGE).
+# Decided to not make it set health to 0.
+kill-instantly: false
+
+# Block height at which a player will be teleported to in overworld.
+height-enabled: false
+height: 255
