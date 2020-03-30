@@ -1,0 +1,7 @@
+name: VoidTeleport
+version: ${project.version}
+main: xyz.angeloanan.voidteleport.VoidTeleport
+api-version: 1.13
+authors: [angeloanan]
+description: Teleports people when they fall into the void
+website: angeloanan.xyz
