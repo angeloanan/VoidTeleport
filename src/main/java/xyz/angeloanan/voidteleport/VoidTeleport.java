@@ -1,10 +1,11 @@
 package xyz.angeloanan.voidteleport;
 
 import org.bukkit.Location;
+import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.player.PlayerMoveEvent;
+import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class VoidTeleport extends JavaPlugin implements Listener {
@@ -20,13 +21,18 @@ public final class VoidTeleport extends JavaPlugin implements Listener {
     }
 
     @EventHandler
-    public void voidCoord(PlayerMoveEvent e) {
-        if (e.getTo().getY() < -10){
-            Player p = e.getPlayer();
-            Location tp_coord = getTPCoord(p);
+    public void voidTP(EntityDamageEvent e) {
+        if (e.getEntityType() == EntityType.PLAYER) {
+            if (e.getEntity().getLocation().getY() < 0) {
+                Player p = (Player) e.getEntity();
+                Location tp_coord = getTPCoord(p);
 
-            p.setFallDistance(8888);
-            p.teleportAsync(tp_coord);
+                p.setFallDistance(8888);
+                p.teleportAsync(tp_coord);
+
+                String player_name = p.getPlayerListName();
+                getServer().broadcastMessage(player_name.concat(" has been teleported because he fell to the void."));
+            }
         }
     }
 
